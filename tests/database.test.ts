@@ -60,7 +60,7 @@ before(async()=>{
 });
 after(async()=>{await db.close();});
 
-test('all 23 application tables have RLS enabled',async()=>{const rows=await query<{relrowsecurity:boolean}>("select c.relrowsecurity from pg_class c join pg_namespace n on n.oid=c.relnamespace where n.nspname='public' and c.relkind='r'");assert.equal(rows.length,23);assert.ok(rows.every(r=>r.relrowsecurity));});
+test('all 44 application tables have RLS enabled',async()=>{const rows=await query<{relrowsecurity:boolean}>("select c.relrowsecurity from pg_class c join pg_namespace n on n.oid=c.relnamespace where n.nspname='public' and c.relkind='r'");assert.equal(rows.length,44);assert.ok(rows.every(r=>r.relrowsecurity));});
 test('catalog has three subjects and six verified paper blueprints',async()=>{assert.equal((await query('select * from public.subjects')).length,3);const p=await query<{total_marks:number;duration_minutes:number;core_only:boolean}>('select * from public.paper_blueprints where code not like \'TEST/%\'');assert.equal(p.length,6);assert.ok(p.every(p=>p.core_only?p.total_marks===110&&p.duration_minutes===120:p.total_marks===70&&p.duration_minutes===75));});
 test('signup trigger creates a nonprivileged profile',async()=>assert.equal((await query('select * from public.profiles where user_id=$1',[A])).length,1));
 test('RLS isolates learner documents',async()=>isolated(async()=>{await asUser(A);const rows=await query<{user_id:string}>('select user_id from public.documents');assert.equal(rows.length,1);assert.equal(rows[0].user_id,A);}));
