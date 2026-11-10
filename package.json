@@ -1,19 +1,6 @@
 {
-  "name": "science-ledger",
-  "version": "0.2.0",
-  "private": true,
-  "type": "module",
-  "packageManager": "pnpm@12.18.0",
-  "engines": {"node": ">=22.18 <25"},
-  "scripts": {
-    "dev": "next dev --hostname 0.0.0.0",
-    "build": "next build --webpack",
-    "start": "next start",
-    "typecheck": "tsc --noEmit",
-    "test": "node --max-old-space-size=192 --liftoff-only --no-wasm-tier-up --wasm-num-compilation-tasks=1 --experimental-strip-types --test --test-concurrency=1 tests/*.test.ts",
-    "test:e2e": "playwright test",
-    "worker": "node --experimental-strip-types src/worker/run.ts"
-  },
-  "dependencies": {"@supabase/ssr":"0.12.7","@supabase/supabase-js":"2.119.0","katex":"0.19.1","next":"16.4.5","react":"19.3.1","react-dom":"19.3.1","server-only":"0.0.1","zod":"4.6.7"},
-  "devDependencies": {"@electric-sql/pglite":"0.5.16","@playwright/test":"1.56.1","@tailwindcss/postcss":"4.3.5","@types/node":"24.10.1","@types/react":"19.3.0","@types/react-dom":"19.3.0","tailwindcss":"4.3.5","typescript":"5.9.3"}
+ "name":"science-ledger","version":"0.2.0","private":true,"type":"module","packageManager":"pnpm@12.18.0","engines":{"node":">=22.18 <25"},
+ "scripts":{"dev":"next dev --hostname 0.0.0.0","build":"next build --webpack && tsc --noEmit","start":"next start","typecheck":"tsc --noEmit","test":"node --max-old-space-size=192 --liftoff-only --no-wasm-tier-up --wasm-num-compilation-tasks=1 --experimental-strip-types --test --test-concurrency=1 tests/*.test.ts","test:render":"node --max-old-space-size=256 --import ./tests/render-loader.mjs --test tests/*.render.test.mjs","test:e2e":"playwright test","worker":"node --experimental-strip-types src/worker/run.ts"},
+ "dependencies":{"@supabase/ssr":"0.12.7","@supabase/supabase-js":"2.119.0","katex":"0.19.1","next":"16.4.5","react":"19.3.1","react-dom":"19.3.1","server-only":"0.0.1","zod":"4.6.7"},
+ "devDependencies":{"@electric-sql/pglite":"0.5.16","@playwright/test":"1.56.1","@tailwindcss/postcss":"4.3.5","@types/node":"24.10.1","@types/react":"19.3.0","@types/react-dom":"19.3.0","tailwindcss":"4.3.5","typescript":"5.9.3"}
 }
