@@ -1,0 +1,2 @@
+# Trusted, hash-pinned official specification PDFs only; never student uploads.
+PyMuPDF==1.26.6
