@@ -1,0 +1,1 @@
+export default function Loading(){return <main id="main" className="container narrow" role="status" aria-live="polite"><div className="card"><h2>Opening your study space…</h2><div className="loading-line"/><p className="muted">Loading your own records, not sample results.</p></div></main>;}

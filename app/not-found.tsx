@@ -1,0 +1,1 @@
+import Link from 'next/link';export default function Missing(){return <main id="main" className="container narrow"><div className="card empty"><p className="eyebrow">Page not found</p><h1>Let’s get you back on track.</h1><Link className="button" href="/dashboard">Open your workspace</Link></div></main>;}
